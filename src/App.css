@@ -1,0 +1,14 @@
+
+
+.container {
+  width: 100%;
+  height: 1000px;
+  align-content: center;
+  justify-content: center;
+  display: flex;
+
+}
+
+.mt {
+  margin-top: 2%;
+}
