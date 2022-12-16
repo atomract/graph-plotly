@@ -41,28 +41,17 @@ const Table = ({plotData}) => {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {plotData.map(data => (
-                    <tr key={data.id}>
+                  {plotData.id.map(data => (
+                    <tr key={data}>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="text-sm font-medium text-gray-900">
-                          <div className="text-sm text-gray-500">{data.id}</div>
-                          </div>
-                          {console.log('daffffffffffffffta.id')}
-                          {console.log(data.id)}
-                          {console.log('fffffffffffffdata.id')}
-                          <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900">{data.id}</div>
-                            <div className="text-sm text-gray-500">{data.impressions}</div>
+                          <div className="text-sm text-gray-500">{data}</div>
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{data.reach}</div>
-                        <div className="text-sm text-gray-500">{data.clicks}</div>
-                      </td>
                     </tr>
-                  ))}
+                    ))}
                 </tbody>
               </table>
             </div>
