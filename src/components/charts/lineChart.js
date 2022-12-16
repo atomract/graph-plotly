@@ -8,7 +8,7 @@ export const LineChart = (data, statsType, title) => {
 
 
     return (
-      <div>
+      <div style={{boxShadow: '2px 2px 9px #d8f9ff'}}>
         {console.log(data)}
         <Accordion>
           <AccordionSummary
