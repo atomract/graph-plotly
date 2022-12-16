@@ -6,6 +6,7 @@ import { Accordion, AccordionSummary, Card, CardActions } from "@mui/material";
 import GreyContainer from '../UI/greyContainer';
 import ButtonGreen from '../UI/buttonGreen';
 import Table from '../UI/table';
+import data from '../data';
 
 export const LineChart = (data, statsType, title) => {
 
@@ -35,7 +36,6 @@ export const LineChart = (data, statsType, title) => {
                 <CardActions>
 
                     <Plot
-                    useResizeHandler
                     data={[
                       {
                         x: dataSegregation(data.data, data.statsType)['dates'],
@@ -75,7 +75,9 @@ export const LineChart = (data, statsType, title) => {
                         }
                       }
                     ]}
+                    config={{responsive: true}}
                     layout={ {width: 1240, height: 500, title: data.title, xaxis: {title: "Date"}, yaxis: {title: "Count"}, yaxis2: {title: "Spends",overlaying: "y",side: "right"},  showlegend: true,
+                    
                     legend: {
                       x: 1,
                       xanchor: 'left',

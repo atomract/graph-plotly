@@ -40,14 +40,13 @@ export const dataSegregation = (data, statsType) => {
         updatedOn.push(e.date)
       })
     }
-    plotData['dates'] = dates
-    plotData['dates'] = dates;
-    plotData['spend'] = spend;
-    plotData['reach'] = reach;
-    plotData['impressions'] = impressions;
-    plotData['clicks'] = clicks;
-    plotData['updatedOn'] = updatedOn;
-    plotData['id'] = clicks;
+    plotData.dates = dates;
+    plotData.spend = spend;
+    plotData.reach = reach;
+    plotData.impressions = impressions;
+    plotData.clicks = clicks;
+    plotData.updatedOn = updatedOn;
+    plotData.id= id;
     return plotData
 
   } 
