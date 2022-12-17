@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Plot from 'react-plotly.js';
-import { dataSegregation } from '../functions/dataSegregation';
+import { dataSegregation, tableDataSegregation } from '../functions/dataSegregation';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Accordion, AccordionSummary, Card, CardActions } from "@mui/material";
 import GreyContainer from '../UI/greyContainer';
@@ -85,7 +85,7 @@ export const LineChart = (data, statsType, title) => {
                     }} }
                   />
                 </CardActions>
-                <Table plotData={dataSegregation(data.data, data.statsType)}/>
+                <Table plotData={tableDataSegregation(data.data, data.statsType)}/>
               </Card>
           </Accordion>
         </div>

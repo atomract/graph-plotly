@@ -41,12 +41,40 @@ const Table = ({plotData}) => {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {plotData.id.map(data => (
-                    <tr key={data}>
+                  {plotData.map(data => (
+                    <tr>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="text-sm font-medium text-gray-900">
-                          <div className="text-sm text-gray-500">{data}</div>
+                          <div className="text-sm text-gray-500">{data.id}</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div className="text-sm font-medium text-gray-900">
+                          <div className="text-sm text-gray-500">{data.impressions}</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div className="text-sm font-medium text-gray-900">
+                          <div className="text-sm text-gray-500">{data.reach}</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div className="text-sm font-medium text-gray-900">
+                          <div className="text-sm text-gray-500">{data.clicks}</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center">
+                          <div className="text-sm font-medium text-gray-900">
+                          <div className="text-sm text-gray-500">{data.spend}</div>
                           </div>
                         </div>
                       </td>

@@ -50,3 +50,45 @@ export const dataSegregation = (data, statsType) => {
     return plotData
 
   } 
+
+  export const tableDataSegregation = (data, statsType) => {
+    let plotData = []
+    if(statsType === 'campaigns_stats') {
+      data[0].facebook_ads_insights.stats.map(e => {
+        plotData.push({
+          updatedOn: e.date,
+          spend : e.campaigns_stats.total_spend,
+          impressions : e.campaigns_stats.total_impressions,
+          reach : e.campaigns_stats.total_reach,
+          clicks : e.campaigns_stats.total_clicks,
+          id : e.account_id
+        })
+      })
+    }
+    else if(statsType === 'adsets_stats'){
+      data[0].facebook_ads_insights.stats.map(e => {
+        plotData.push({
+          updatedOn: e.date,
+          spend : e.adsets_stats.total_spend,
+          impressions : e.adsets_stats.total_impressions,
+          reach : e.adsets_stats.total_reach,
+          clicks : e.adsets_stats.total_clicks,
+          id : e.account_id
+        })
+      })
+    }
+    else {
+      data[0].facebook_ads_insights.stats.map(e => {
+        plotData.push({
+          updatedOn: e.date,
+          spend : e.adsets_stats.total_spend,
+          impressions : e.adsets_stats.total_impressions,
+          reach : e.adsets_stats.total_reach,
+          clicks : e.adsets_stats.total_clicks,
+          id : e.account_id
+        })
+      })
+    }
+    return plotData
+
+  } 
