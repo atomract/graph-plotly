@@ -1,4 +1,4 @@
-import ButtonGreen from "./buttonGreen";
+import ButtonGrp from "./buttonGreen";
 import GreyContainer from "./greyContainer";
 
 const InsightDetails = ({children}) => {
@@ -9,7 +9,7 @@ const InsightDetails = ({children}) => {
                     <span className="flex"><p>Facebook Page: <b>79000285101</b></p></span>
                     <span className="flex flex-row"><p>Start Date: </p> <p> 07/12/2022</p></span>
                     <span className="flex flex-row"><p>End Date: </p> <p> 07/12/2022</p></span>
-                    <span className="flex flex-row justify-end"><p>As of 14th Dec 2022 9:00AM </p> <ButtonGreen btnColor="bg-green-500" className="ml-6" text="Refresh Data"/></span>
+                    {/* <span className="flex flex-row justify-end content-evenly"><p>As of 14th Dec 2022 9:00AM </p> <ButtonGrp className="ml-6 mb-3" text="Refresh Data"/></span> */}
                     </div>
         </GreyContainer>
     )

@@ -8,20 +8,20 @@ import ButtonGreen from '../UI/buttonGreen';
 import Table from '../UI/table';
 import data from '../data';
 
-export const LineChart = (data, statsType, title) => {
+export const LineChart = (data, title, socialType) => {
+
+  const [adsType, setAdsType] = useState()
+  const [platformType, setPlatformType] = useState()
+
+  useEffect(() => {
+    setAdsType(data.statsType)
+    setPlatformType(data.socialType)
+    // console.log(data.socialType)
+  },[data.statsType, data.socialType])
 
 
     return (
       <div className='shadow-cyan-500/50'>
-        <GreyContainer classNames="mt-6" bgColor="bg-slate-100">
-          <div className='flex flex-row justify-start content-evenly'>
-            <ButtonGreen txtColor="text-white" btnColor="bg-violet-500" className="ml-6" text="All"/>
-            <ButtonGreen txtColor="text-black" btnColor="bg-slate-50" text="Facebook"/>
-            <ButtonGreen txtColor="text-black" btnColor="bg-slate-50" text="Instagram"/>
-            <ButtonGreen txtColor="text-black" btnColor="bg-slate-50" text="Messanger"/>
-            <ButtonGreen txtColor="text-black" btnColor="bg-slate-50" text="Audience Network"/>
-          </div>
-        </GreyContainer>
         <div>
             <Accordion>
               <AccordionSummary
@@ -38,19 +38,19 @@ export const LineChart = (data, statsType, title) => {
                     <Plot
                     data={[
                       {
-                        x: dataSegregation(data.data, data.statsType)['dates'],
-                        y: dataSegregation(data.data, data.statsType)['spend'],
+                        x: dataSegregation(data.data, adsType)['dates'],
+                        y: dataSegregation(data.data, adsType)['spend'],
                         name: 'Spend'
                       },
                       {
-                        x: dataSegregation(data.data, data.statsType)['dates'],
-                        y: dataSegregation(data.data, data.statsType)['spend'],
+                        x: dataSegregation(data.data, adsType)['dates'],
+                        y: dataSegregation(data.data, adsType)['spend'],
                         yaxis: 'y2'
                       },
                       {
                         type: 'bar',
-                        x: dataSegregation(data.data, data.statsType)['dates'],
-                        y: dataSegregation(data.data, data.statsType)['impressions'],
+                        x: dataSegregation(data.data, adsType)['dates'],
+                        y: dataSegregation(data.data, adsType)['impressions'],
                         name: 'Impressions',
                         marker: {
                           color: 'd8f9ff'
@@ -58,8 +58,8 @@ export const LineChart = (data, statsType, title) => {
                       },
                       {
                         type: 'bar',
-                        x: dataSegregation(data.data, data.statsType)['dates'],
-                        y: dataSegregation(data.data, data.statsType)['reach'],
+                        x: dataSegregation(data.data, adsType)['dates'],
+                        y: dataSegregation(data.data, adsType)['reach'],
                         name: 'Reach',
                         marker: {
                           color: '00a6ab'
@@ -67,8 +67,8 @@ export const LineChart = (data, statsType, title) => {
                       },
                       {
                         type: 'bar',
-                        x: dataSegregation(data.data, data.statsType)['dates'],
-                        y: dataSegregation(data.data, data.statsType)['clicks'],
+                        x: dataSegregation(data.data, adsType)['dates'],
+                        y: dataSegregation(data.data, adsType)['clicks'],
                         name: 'Clicks',
                         marker: {
                           color: '000080'
@@ -85,7 +85,7 @@ export const LineChart = (data, statsType, title) => {
                     }} }
                   />
                 </CardActions>
-                <Table plotData={tableDataSegregation(data.data, data.statsType)}/>
+                <Table rows={["Account Name", "UPDATED ON", "IMPRESSIONS", "reach", "clicks", "spends"]} plotData={tableDataSegregation(data.data, adsType, platformType)}/>
               </Card>
           </Accordion>
         </div>
