@@ -1,4 +1,4 @@
-export const dataSegregation = (data, statsType) => {
+export const dataSegregation = (data, statsType, platformType) => {
   let plotData = []
   let dates = []
   let id = []
@@ -6,41 +6,41 @@ export const dataSegregation = (data, statsType) => {
   let spend = []
   let reach = []
   let clicks = []
-  let impressions = []  
-  // console.log(data)
-  if(statsType === 'campaigns_stats') {
-    data[0].facebook_ads_insights.stats.map(e => {
-      dates.push(e.date)
-      spend.push(e.campaigns_stats.total_spend)
-      impressions.push(e.campaigns_stats.total_impressions)
-      reach.push(e.campaigns_stats.total_reach)
-      clicks.push(e.campaigns_stats.total_clicks)
-      id.push(e.account_id)
-      updatedOn.push(e.date)
-    })
-  }
-  else if(statsType === 'adsets_stats'){
-    data[0].facebook_ads_insights.stats.map(e => {
-      dates.push(e.date)
-      spend.push(e.adsets_stats.total_spend)
-      impressions.push(e.adsets_stats.total_impressions)
-      reach.push(e.adsets_stats.total_reach)
-      clicks.push(e.adsets_stats.total_clicks)        
-      id.push(e.account_id)
-      updatedOn.push(e.date)
-    })
-  }
-  else {
-    data[0].facebook_ads_insights.stats.map(e => {
-      dates.push(e.date)
-      spend.push(e.ads_stats.total_spend)
-      impressions.push(e.ads_stats.total_impressions)
-      reach.push(e.ads_stats.total_reach)
-      clicks.push(e.ads_stats.total_clicks)
-      id.push(e.account_id)
-      updatedOn.push(e.date)
-    })
-  }
+  let impressions = []
+  // if(platformType === 'All') {    
+    if(statsType === 'campaigns_stats') {
+      data[0].facebook_ads_insights.stats.map(e => {
+        dates.push(e.date)
+        spend.push(e.campaigns_stats.total_spend)
+        impressions.push(e.campaigns_stats.total_impressions)
+        reach.push(e.campaigns_stats.total_reach)
+        clicks.push(e.campaigns_stats.total_clicks)
+        id.push(e.account_id)
+        updatedOn.push(e.date)
+      })
+    }
+    else if(statsType === 'adsets_stats'){
+      data[0].facebook_ads_insights.stats.map(e => {
+        dates.push(e.date)
+        spend.push(e.adsets_stats.total_spend)
+        impressions.push(e.adsets_stats.total_impressions)
+        reach.push(e.adsets_stats.total_reach)
+        clicks.push(e.adsets_stats.total_clicks)        
+        id.push(e.account_id)
+        updatedOn.push(e.date)
+      })
+    }
+    else {
+      data[0].facebook_ads_insights.stats.map(e => {
+        dates.push(e.date)
+        spend.push(e.ads_stats.total_spend)
+        impressions.push(e.ads_stats.total_impressions)
+        reach.push(e.ads_stats.total_reach)
+        clicks.push(e.ads_stats.total_clicks)
+        id.push(e.account_id)
+        updatedOn.push(e.date)
+      })
+    }
   plotData.dates = dates;
   plotData.spend = spend;
   plotData.reach = reach;
@@ -53,9 +53,8 @@ export const dataSegregation = (data, statsType) => {
 } 
 
 export const tableDataSegregation = (data, statsType, platformType) => {
-  let plotData = []
+    let plotData = []                                                    
     data[0].facebook_ads_insights.data.map(e => {
-      // console.log(e)
       if(statsType === 'campaigns_stats') {
           e.campaigns.map(e2 => {
             if(platformType === 'Facebook'){
@@ -65,7 +64,7 @@ export const tableDataSegregation = (data, statsType, platformType) => {
                   impressions : e2?.facebook?.impressions,
                   reach : e2?.facebook?.reach,
                   clicks : e2?.facebook?.clicks,
-                  name : e2?.facebook?.account_name
+                  name : e2?.facebook?.name
                 })
             }
             else if(platformType === 'Instagram'){
@@ -75,7 +74,7 @@ export const tableDataSegregation = (data, statsType, platformType) => {
                 impressions : e2?.instagram?.impressions,
                 reach : e2?.instagram?.reach,
                 clicks : e2?.instagram?.clicks,
-                name : e2?.instagram?.account_name
+                name : e2?.instagram?.name
               })
             }
             else if(platformType === 'Messenger'){
@@ -85,7 +84,7 @@ export const tableDataSegregation = (data, statsType, platformType) => {
                 impressions : e2?.messenger?.impressions,
                 reach : e2?.messenger?.reach,
                 clicks : e2?.messenger?.clicks,
-                name : e2?.messenger?.account_name
+                name : e2?.messenger?.name
               })
             }
             else if(platformType === 'Audience Network'){
@@ -95,7 +94,7 @@ export const tableDataSegregation = (data, statsType, platformType) => {
                 impressions : e2?.audience_network?.impressions,
                 reach : e2?.audience_network?.reach,
                 clicks : e2?.audience_network?.clicks,
-                name : e2?.audience_network?.account_name
+                name : e2?.audience_network?.name
               })
             }
             else {
@@ -105,7 +104,7 @@ export const tableDataSegregation = (data, statsType, platformType) => {
                 impressions : e2?.summary?.impressions,
                 reach : e2?.summary?.reach,
                 clicks : e2?.summary?.clicks,
-                name : e2?.summary?.account_name
+                name : e2?.summary?.name
               })
               // console.log(e2.summary);
             }

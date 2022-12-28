@@ -27,13 +27,13 @@ const Home = () => {
                 </div>
                 </GreyContainer>
                 <GreyContainer className="shadow-gray-400 p-2 text-center bg-gray-200 rounded-xl shadow border mb-2">
-                    <LineChart data={data} statsType = {statsType.campaigns_stats} socialType={platformType} title ={'Campaigns Stats Graph Timeline'}/>
+                    <LineChart data={data} axisX={'dates'} statsType = {statsType.campaigns_stats} socialType={platformType} title ={'Campaigns Stats Graph Timeline'}/>
                 </GreyContainer>
                 <GreyContainer>
-                    <LineChart data={data} statsType = {statsType.ads_stats} socialType={platformType} title ={'Ads Stats Graph Timeline'}/>
+                    <LineChart data={data} axisX={'dates'} statsType = {statsType.ads_stats} socialType={platformType} title ={'Ads Stats Graph Timeline'}/>
                 </GreyContainer>
                 <GreyContainer>
-                    <LineChart data={data} statsType = {statsType.adsets_stats} socialType={platformType} title ={'Adsets Stats Graph Timeline'}/>
+                    <LineChart data={data} axisX={'dates'} statsType = {statsType.adsets_stats} socialType={platformType} title ={'Adsets Stats Graph Timeline'}/>
                 </GreyContainer>
             </div>
         </div>

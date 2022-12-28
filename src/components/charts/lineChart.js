@@ -8,7 +8,7 @@ import ButtonGreen from '../UI/buttonGreen';
 import Table from '../UI/table';
 import data from '../data';
 
-export const LineChart = (data, title, socialType) => {
+export const LineChart = (data, title, socialType, axisX, axisY) => {
 
   const [adsType, setAdsType] = useState()
   const [platformType, setPlatformType] = useState()
@@ -38,19 +38,19 @@ export const LineChart = (data, title, socialType) => {
                     <Plot
                     data={[
                       {
-                        x: dataSegregation(data.data, adsType)['dates'],
-                        y: dataSegregation(data.data, adsType)['spend'],
+                        x: dataSegregation(data.data, adsType, platformType)[axisX],
+                        y: dataSegregation(data.data, adsType, platformType)['spend'],
                         name: 'Spend'
                       },
                       {
-                        x: dataSegregation(data.data, adsType)['dates'],
-                        y: dataSegregation(data.data, adsType)['spend'],
+                        x: dataSegregation(data.data, adsType, platformType)[axisX],
+                        y: dataSegregation(data.data, adsType, platformType)['spend'],
                         yaxis: 'y2'
                       },
                       {
                         type: 'bar',
-                        x: dataSegregation(data.data, adsType)['dates'],
-                        y: dataSegregation(data.data, adsType)['impressions'],
+                        x: dataSegregation(data.data, adsType, platformType)[axisX],
+                        y: dataSegregation(data.data, adsType, platformType)['impressions'],
                         name: 'Impressions',
                         marker: {
                           color: 'd8f9ff'
@@ -58,8 +58,8 @@ export const LineChart = (data, title, socialType) => {
                       },
                       {
                         type: 'bar',
-                        x: dataSegregation(data.data, adsType)['dates'],
-                        y: dataSegregation(data.data, adsType)['reach'],
+                        x: dataSegregation(data.data, adsType, platformType)[axisX],
+                        y: dataSegregation(data.data, adsType, platformType)['reach'],
                         name: 'Reach',
                         marker: {
                           color: '00a6ab'
@@ -67,21 +67,21 @@ export const LineChart = (data, title, socialType) => {
                       },
                       {
                         type: 'bar',
-                        x: dataSegregation(data.data, adsType)['dates'],
-                        y: dataSegregation(data.data, adsType)['clicks'],
+                        x: dataSegregation(data.data, adsType, platformType)[axisX],
+                        y: dataSegregation(data.data, adsType, platformType)['clicks'],
                         name: 'Clicks',
                         marker: {
                           color: '000080'
                         }
                       }
                     ]}
-                    config={{responsive: true}}
+                    config={{responsive: true, staticPlot: true}}
                     layout={ {width: 1240, height: 500, title: data.title, xaxis: {title: "Date"}, yaxis: {title: "Count"}, yaxis2: {title: "Spends",overlaying: "y",side: "right"},  showlegend: true,
                     
                     legend: {
                       x: 1,
                       xanchor: 'left',
-                      y: -10
+                      y: 2
                     }} }
                   />
                 </CardActions>
