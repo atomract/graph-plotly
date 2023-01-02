@@ -8,7 +8,7 @@ import ButtonGreen from '../UI/buttonGreen';
 import Table from '../UI/table';
 import data from '../data';
 
-export const LineChart = (data, title, socialType, axisX, axisY) => {
+export const LineChart = (data, title, socialType, axisX, axisY, plotConfig) => {
 
   const [adsType, setAdsType] = useState()
   const [platformType, setPlatformType] = useState()
@@ -32,48 +32,23 @@ export const LineChart = (data, title, socialType, axisX, axisY) => {
                   {data.title}
                   </b>
               </AccordionSummary>
+              {console.log(data.plotConfig)}
               <Card>
                 <CardActions>
 
                     <Plot
                     data={[
-                      {
-                        x: dataSegregation(data.data, adsType, platformType)[axisX],
-                        y: dataSegregation(data.data, adsType, platformType)['spend'],
-                        name: 'Spend'
-                      },
-                      {
-                        x: dataSegregation(data.data, adsType, platformType)[axisX],
-                        y: dataSegregation(data.data, adsType, platformType)['spend'],
-                        yaxis: 'y2'
-                      },
-                      {
-                        type: 'bar',
-                        x: dataSegregation(data.data, adsType, platformType)[axisX],
-                        y: dataSegregation(data.data, adsType, platformType)['impressions'],
-                        name: 'Impressions',
-                        marker: {
-                          color: 'd8f9ff'
+                      data.plotConfig.map((e) => {
+                        return {
+                          type: e.type,
+                          x: dataSegregation(data.data, adsType, platformType)[eval(e.x)],
+                          y: dataSegregation(data.data, adsType, platformType)[e.y],
+                          name: e.name,
+                          marker: {
+                            color: e.color
+                          },
                         }
-                      },
-                      {
-                        type: 'bar',
-                        x: dataSegregation(data.data, adsType, platformType)[axisX],
-                        y: dataSegregation(data.data, adsType, platformType)['reach'],
-                        name: 'Reach',
-                        marker: {
-                          color: '00a6ab'
-                        }
-                      },
-                      {
-                        type: 'bar',
-                        x: dataSegregation(data.data, adsType, platformType)[axisX],
-                        y: dataSegregation(data.data, adsType, platformType)['clicks'],
-                        name: 'Clicks',
-                        marker: {
-                          color: '000080'
-                        }
-                      }
+                      })
                     ]}
                     config={{responsive: true, staticPlot: true}}
                     layout={ {width: 1240, height: 500, title: data.title, xaxis: {title: "Date"}, yaxis: {title: "Count"}, yaxis2: {title: "Spends",overlaying: "y",side: "right"},  showlegend: true,

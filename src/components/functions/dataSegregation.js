@@ -10,7 +10,9 @@ export const dataSegregation = (data, statsType, platformType) => {
   // if(platformType === 'All') {    
     if(statsType === 'campaigns_stats') {
       data[0].facebook_ads_insights.stats.map(e => {
-        dates.push(e.date)
+        let res = e.date;
+        console.log(e.date);  
+        dates.push(e.date);
         spend.push(e.campaigns_stats.total_spend)
         impressions.push(e.campaigns_stats.total_impressions)
         reach.push(e.campaigns_stats.total_reach)

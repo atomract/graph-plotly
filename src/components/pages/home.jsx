@@ -7,6 +7,8 @@ import data from '../data'
 import GreyContainer from "../UI/greyContainer";
 import ButtonGrp from "../UI/buttonGreen";
 import InsightDetails from "../UI/insightDetails";
+import { dataSegregation, tableDataSegregation } from '../functions/dataSegregation';
+
 
 const Home = () => {
 
@@ -16,6 +18,38 @@ const Home = () => {
     const afterClickFun = (event) => {
         setPlatformType(event.target.name);
       };
+
+    const plotConfigs = [
+        {
+          x: 'data.axisX',
+          y: 'spend',
+          name: 'Spend',
+          yaxis: 'nsty2'
+
+        },
+        {
+          type: 'bar',
+          x: 'data.axisX',
+          y: 'impressions',
+          name: 'Impressions',
+            color: 'd8f9ff'
+        },
+        {
+          type: 'bar',
+          x: 'data.axisX',
+          y: 'reach',
+          name: 'Reach',
+            color: '00a6ab'
+
+        },
+        {
+          type: 'bar',
+          x: 'data.axisX',
+          y: 'clicks',
+          name: 'Clicks',
+            color: '000080'
+        }
+      ]
 
     return (
         <div>
@@ -27,13 +61,13 @@ const Home = () => {
                 </div>
                 </GreyContainer>
                 <GreyContainer className="shadow-gray-400 p-2 text-center bg-gray-200 rounded-xl shadow border mb-2">
-                    <LineChart data={data} axisX={'dates'} statsType = {statsType.campaigns_stats} socialType={platformType} title ={'Campaigns Stats Graph Timeline'}/>
+                    <LineChart data={data} plotConfig={plotConfigs} axisX={'dates'} statsType = {statsType.campaigns_stats} socialType={platformType} title ={'Campaigns Stats Graph Timeline'}/>
                 </GreyContainer>
                 <GreyContainer>
-                    <LineChart data={data} axisX={'dates'} statsType = {statsType.ads_stats} socialType={platformType} title ={'Ads Stats Graph Timeline'}/>
+                    <LineChart data={data} plotConfig={plotConfigs} axisX={'dates'} statsType = {statsType.ads_stats} socialType={platformType} title ={'Ads Stats Graph Timeline'}/>
                 </GreyContainer>
                 <GreyContainer>
-                    <LineChart data={data} axisX={'dates'} statsType = {statsType.adsets_stats} socialType={platformType} title ={'Adsets Stats Graph Timeline'}/>
+                    <LineChart data={data} plotConfig={plotConfigs} axisX={'dates'} statsType = {statsType.adsets_stats} socialType={platformType} title ={'Adsets Stats Graph Timeline'}/>
                 </GreyContainer>
             </div>
         </div>
